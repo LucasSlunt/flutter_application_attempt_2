@@ -1,0 +1,9 @@
+{
+    "exerciseID":1,
+    "name":"Dumbbell Bicep Curl",
+    "primaryMusclesWorked":["bicep"],
+    "secondaryMusclesWorked":[],
+    "type":"dumbbell",
+    "statType":"reps",
+    "currentPR":null
+}

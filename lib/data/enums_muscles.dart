@@ -24,6 +24,6 @@ enum Muscles {
   calf('Calves')
   ;
   
-  final String value;
-  const Muscles(this.value);
+  final String name;
+  const Muscles(this.name);
   }
