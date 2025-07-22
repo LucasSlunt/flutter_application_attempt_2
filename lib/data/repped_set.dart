@@ -25,7 +25,7 @@ class ReppedSet extends WorkoutSet{
   }
 
   @override
-  double calculateTotalWeightLifted(){
+  double calculateTotalSetVolume(){
     return  _weightPerRep * _numberOfReps;
   }
 }

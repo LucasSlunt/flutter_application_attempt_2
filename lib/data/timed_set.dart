@@ -24,7 +24,7 @@ double getDuration(){
   }
 
   @override
-  double calculateTotalWeightLifted() {
+  double calculateTotalSetVolume() {
     return _weightPerSet * _duration * totalWeightLiftedMultiplier;
   }
 

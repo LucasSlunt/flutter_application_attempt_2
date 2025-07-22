@@ -5,5 +5,5 @@ abstract class WorkoutSet {
     return totalWeightLifted;
   }
 
-  double calculateTotalWeightLifted();
+  double calculateTotalSetVolume();
 }
