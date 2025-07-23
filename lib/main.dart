@@ -34,7 +34,7 @@ class HomePage extends StatelessWidget {
         ),
 
       body: ElevatedButton(
-        child: Text("elevated Button"),
+        child: Text("start workout"),
         onPressed: () {
           //start workout button
           Navigator.push(context, MaterialPageRoute(builder: (_) => CurrentWorkoutScreen()));
@@ -55,18 +55,23 @@ class CurrentWorkoutScreen extends StatelessWidget{
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: Text("Second page"),
+        title: Text("my workout"),
       ),
       body: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemBuilder: (_, index){
           return Container(
-            color: Color.fromARGB(255, Random().nextInt(255), 0, 0),
+            color: Color.fromARGB(255, Random().nextInt(255), Random().nextInt(255), 0),
             height: 500,
-            width: 500,
+            padding: EdgeInsets.all(100),
             //child: Text("Page $index"),
             //child: ExerciseWidget("$index").buildName(context)
-            child: ReppedSetWidget(name: "exercise 1"),
+            child: Column(
+              children: [
+                ReppedSetWidget(),
+                ReppedSetWidget()
+              ],
+            ),
           );
         }
       ),
@@ -84,41 +89,50 @@ class ExerciseWidget {
     return Text(name, style: Theme.of(context).textTheme.headlineLarge);
   }
 }
-/*
-class ReppedSetWidget {
-
-  ReppedSet set = ReppedSet();
-
-  Widget buildNumberOfReps(BuildContext context){
-    return ElevatedButton(
-      onPressed: () => {
-
-      }, 
-      child: Text("Number of Reps: "));
-  }
-}*/
 
 class ReppedSetWidget extends StatefulWidget{
-  final String name;
 
-  const ReppedSetWidget({super.key, required this.name});
+  const ReppedSetWidget({super.key});
 
-  @override ReppedSetState createState() => ReppedSetState();
+  @override 
+  ReppedSetState createState() => ReppedSetState();
 }
 
 class ReppedSetState extends State<ReppedSetWidget> {
-  int numOfReps = 0;
+  ReppedSet set = ReppedSet();
 
   @override
   Widget build(BuildContext context){
     //return Text('${widget.name}: $numOfReps');
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          numOfReps++;
-        });
-      },
-      child: Text('${widget.name}: $numOfReps'),
+    return Container(
+      color: Colors.blue,
+      height: 50,
+      width: 200,
+      margin: EdgeInsets.all(10),
+
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          GestureDetector(
+          onTap: () {
+            setState(() {
+              set.setNumberOfReps(set.getNumberOfReps() + 1);
+            });
+          },
+          child: Text('${set.getNumberOfReps()}', style: Theme.of(context).textTheme.headlineLarge),
+          ),
+
+          GestureDetector(
+          onTap: () {
+            setState(() {
+              set.setWeightPerRep(set.getWeightPerRep() + 1);
+            });
+          },
+          child: Text('${set.getWeightPerRep()}', style: Theme.of(context).textTheme.headlineLarge),
+          ),
+        ],
+      )
     );
+    
   }
 }
