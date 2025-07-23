@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -52,6 +54,16 @@ class CurrentWorkoutScreen extends StatelessWidget{
       appBar: AppBar(
         backgroundColor: Colors.blue,
         title: Text("Second page"),
+      ),
+      body: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (_, index){
+          return Container(
+            color: Color.fromARGB(255, Random().nextInt(255), 0, 0),
+            height: 500,
+            width: 500,
+          );
+        }
       ),
     );
   }
