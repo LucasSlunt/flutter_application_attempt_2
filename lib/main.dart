@@ -100,6 +100,15 @@ class ReppedSetWidget extends StatefulWidget{
 
 class ReppedSetState extends State<ReppedSetWidget> {
   ReppedSet set = ReppedSet();
+  final repTextController = TextEditingController();
+  final weightTextController = TextEditingController();
+
+  @override
+    void dispose(){
+      repTextController.dispose();
+      weightTextController.dispose();
+      super.dispose();
+    }
 
   @override
   Widget build(BuildContext context){
@@ -113,8 +122,36 @@ class ReppedSetState extends State<ReppedSetWidget> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          WorkoutSetDataEntry(),
-          WorkoutSetDataEntry(),
+          SizedBox(
+        width: 50,
+        child:
+          TextField(
+              onChanged: (text) {
+                print("reps:$text");
+              },
+              controller: repTextController,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: "0",
+                
+                ),
+              ),
+      ),
+          SizedBox(
+        width: 50,
+        child:
+          TextField(
+              onChanged: (text) {
+                print("weight:$text");
+              },
+              controller: weightTextController,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: "0",
+                
+                ),
+              ),
+      ),
         ],
       )
     );
@@ -146,7 +183,7 @@ class _WorkoutSetDataEntryState extends State<WorkoutSetDataEntry>{
         child:
           TextField(
               onChanged: (text) {
-                print(text);
+                
               },
               controller: textController,
               decoration: InputDecoration(
