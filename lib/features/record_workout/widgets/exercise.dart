@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '/data/repped_set.dart';
+import '../data_classes/repped_set.dart';
 import '/features/record_workout/widgets/repped_set.dart';
 import '/data/enums_exercise_types.dart';
 import '/data/enums_muscles.dart';
-import '/data/active_exercise.dart';
+import '../data_classes/active_exercise.dart';
 
 class ExerciseWidget extends StatefulWidget{
 final ActiveExercise exercise = 
@@ -28,15 +28,27 @@ class ExerciseWidgetState extends State<ExerciseWidget>{
   @override
   Widget build(BuildContext context) {
     return Column(
+      
+
       children: [
         Text(widget.exercise.name, style: Theme.of(context).textTheme.headlineLarge),
-        Column(
-          children: setWidgets,
+
+        Container(
+          width: 200,
+          height: 400,
+          color: Color.fromARGB(128, 200, 200, 200),
+          child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+              child: Column(
+                children: setWidgets
+                  )
+          )
         ),
+        
+
         ElevatedButton(
           child: Text("Add Set"),
           onPressed: () {
-            print("button presed");
             ReppedSet newSet = ReppedSet();
             widget.exercise.addSet(newSet);
             setState(() {
@@ -44,6 +56,7 @@ class ExerciseWidgetState extends State<ExerciseWidget>{
             });
           }
       ),
+      
       ],
       
     );

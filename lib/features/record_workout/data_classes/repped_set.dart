@@ -1,4 +1,4 @@
-import 'package:flutter_application_attempt_2/data/workout_set.dart';
+import 'package:flutter_application_attempt_2/features/record_workout/data_classes/workout_set.dart';
 
 class ReppedSet extends WorkoutSet{
   int _numberOfReps = 0;

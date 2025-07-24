@@ -36,7 +36,7 @@ class ReppedSetState extends State<ReppedSetWidget> {
         children: [
           //REPS BOX
           SizedBox(
-            width: 50,
+            width: 80,
             child:
             TextField(
               inputFormatters: [
@@ -44,7 +44,6 @@ class ReppedSetState extends State<ReppedSetWidget> {
               ],
               onChanged: (text) {
                 widget.set.setNumberOfReps(int.parse(text));
-                print("reps:${widget.set.getNumberOfReps()}");
               },
               controller: repTextController,
               decoration: InputDecoration(
@@ -56,7 +55,7 @@ class ReppedSetState extends State<ReppedSetWidget> {
       ),
           //WEIGHT BOX
           SizedBox(
-            width: 50,
+            width: 80,
             child:
             TextField(
               inputFormatters: [
@@ -64,7 +63,6 @@ class ReppedSetState extends State<ReppedSetWidget> {
               ],
               onChanged: (text) {
                 widget.set.setWeightPerRep(double.parse(text));
-                print("reps:${widget.set.getWeightPerRep()}");
               },
               controller: weightTextController,
               decoration: InputDecoration(
