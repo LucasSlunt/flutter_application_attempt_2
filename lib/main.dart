@@ -2,6 +2,9 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_application_attempt_2/data/active_exercise.dart';
+import 'package:flutter_application_attempt_2/data/enums_muscles.dart';
+import 'package:flutter_application_attempt_2/data/enums_exercise_types.dart';
 import 'data/repped_set.dart';
 import 'data/timed_set.dart';
 import 'data/workout_set.dart';
@@ -67,12 +70,7 @@ class CurrentWorkoutScreen extends StatelessWidget{
             padding: EdgeInsets.all(100),
             //child: Text("Page $index"),
             //child: ExerciseWidget("$index").buildName(context)
-            child: Column(
-              children: [
-                ReppedSetWidget(),
-                ReppedSetWidget(),
-              ],
-            ),
+            child: ExerciseWidget()
           );
         }
       ),
@@ -80,14 +78,30 @@ class CurrentWorkoutScreen extends StatelessWidget{
   }
 }
 
-class ExerciseWidget {
-  final String name;
+class ExerciseWidget extends StatelessWidget{
+  final ActiveExercise exercise = 
+  ActiveExercise(
+    name: "Bench Press", 
+    primaryMusclesWorked: [Muscles.midChest], 
+    secondaryMusclesWorked: [Muscles.tricep,Muscles.frontDelt], 
+    type: ExerciseType.barbell, 
+    statType: ExerciseStatType.reps, 
+    currentPR: "155"
+    );
     
-  ExerciseWidget(this.name);
+  ExerciseWidget({super.key});
 
-  Widget buildName(BuildContext context){
+  
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text(exercise.name, style: Theme.of(context).textTheme.headlineLarge),
+        ReppedSetWidget(),
+        ReppedSetWidget(),
 
-    return Text(name, style: Theme.of(context).textTheme.headlineLarge);
+      ],
+    );
   }
 }
 
@@ -168,43 +182,4 @@ class ReppedSetState extends State<ReppedSetWidget> {
     );
     
   }
-}
-
-class WorkoutSetDataEntry extends StatefulWidget{
-  const WorkoutSetDataEntry({super.key});
-  
-  @override
-  State<WorkoutSetDataEntry> createState() =>_WorkoutSetDataEntryState();
-  
-}
-
-class _WorkoutSetDataEntryState extends State<WorkoutSetDataEntry>{
-  final textController = TextEditingController();
-
-    @override
-    void dispose(){
-      textController.dispose();
-      super.dispose();
-    }
-    
-    @override
-    Widget build(BuildContext context) {
-      return SizedBox(
-        width: 50,
-        child:
-          TextField(
-              onChanged: (text) {
-                
-              },
-              controller: textController,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: "0",
-                
-                ),
-              ),
-      );
-              
-    }
-
 }
