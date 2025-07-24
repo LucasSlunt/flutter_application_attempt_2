@@ -69,7 +69,7 @@ class CurrentWorkoutScreen extends StatelessWidget{
             child: Column(
               children: [
                 ReppedSetWidget(),
-                ReppedSetWidget()
+                ReppedSetWidget(),
               ],
             ),
           );
@@ -103,7 +103,7 @@ class ReppedSetState extends State<ReppedSetWidget> {
 
   @override
   Widget build(BuildContext context){
-    //return Text('${widget.name}: $numOfReps');
+    
     return Container(
       color: Colors.blue,
       height: 50,
@@ -113,26 +113,50 @@ class ReppedSetState extends State<ReppedSetWidget> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          GestureDetector(
-          onTap: () {
-            setState(() {
-              set.setNumberOfReps(set.getNumberOfReps() + 1);
-            });
-          },
-          child: Text('${set.getNumberOfReps()}', style: Theme.of(context).textTheme.headlineLarge),
-          ),
-
-          GestureDetector(
-          onTap: () {
-            setState(() {
-              set.setWeightPerRep(set.getWeightPerRep() + 1);
-            });
-          },
-          child: Text('${set.getWeightPerRep()}', style: Theme.of(context).textTheme.headlineLarge),
-          ),
+          WorkoutSetDataEntry(),
+          WorkoutSetDataEntry(),
         ],
       )
     );
     
   }
+}
+
+class WorkoutSetDataEntry extends StatefulWidget{
+  const WorkoutSetDataEntry({super.key});
+  
+  @override
+  State<WorkoutSetDataEntry> createState() =>_WorkoutSetDataEntryState();
+  
+}
+
+class _WorkoutSetDataEntryState extends State<WorkoutSetDataEntry>{
+  final textController = TextEditingController();
+
+    @override
+    void dispose(){
+      textController.dispose();
+      super.dispose();
+    }
+    
+    @override
+    Widget build(BuildContext context) {
+      return SizedBox(
+        width: 50,
+        child:
+          TextField(
+              onChanged: (text) {
+                print(text);
+              },
+              controller: textController,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: "0",
+                
+                ),
+              ),
+      );
+              
+    }
+
 }
