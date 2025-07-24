@@ -97,14 +97,29 @@ class ExerciseWidget extends StatelessWidget{
     return Column(
       children: [
         Text(exercise.name, style: Theme.of(context).textTheme.headlineLarge),
-        ReppedSetWidget(),
-        ReppedSetWidget(),
-
+        AddSetWidget(exercise: exercise),
       ],
     );
   }
 }
 
+class AddSetWidget extends StatelessWidget{
+  final ActiveExercise exercise;
+  const AddSetWidget({super.key, required this.exercise});
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      child: Text("Add Set"),
+      onPressed: () {
+        print("add set pressed");
+        exercise.addSet();
+      }
+      
+      );
+  }
+
+}
 class ReppedSetWidget extends StatefulWidget{
 
   const ReppedSetWidget({super.key});

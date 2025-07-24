@@ -25,10 +25,10 @@ class ActiveExercise {
 
   addSet(){
     if (statType == ExerciseStatType.reps){
-      sets.add(new ReppedSet());
+      sets.add(ReppedSet());
     }
     else if (statType == ExerciseStatType.timed){
-      sets.add(new TimedSet());
+      sets.add(TimedSet());
     }
   }
 
