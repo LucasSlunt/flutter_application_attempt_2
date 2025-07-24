@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'data/repped_set.dart';
 import 'data/timed_set.dart';
 import 'data/workout_set.dart';
@@ -122,11 +123,16 @@ class ReppedSetState extends State<ReppedSetWidget> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
+          //REPS BOX
           SizedBox(
-        width: 50,
-        child:
-          TextField(
+            width: 50,
+            child:
+            TextField(
+              inputFormatters: [
+                FilteringTextInputFormatter.allow(RegExp(r'[1234567890]'))
+              ],
               onChanged: (text) {
+                
                 print("reps:$text");
               },
               controller: repTextController,
@@ -137,10 +143,14 @@ class ReppedSetState extends State<ReppedSetWidget> {
                 ),
               ),
       ),
+          //WEIGHT BOX
           SizedBox(
-        width: 50,
-        child:
-          TextField(
+            width: 50,
+            child:
+            TextField(
+              inputFormatters: [
+                FilteringTextInputFormatter.allow(RegExp(r'[1234567890.]'))
+              ],
               onChanged: (text) {
                 print("weight:$text");
               },
