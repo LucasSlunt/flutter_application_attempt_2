@@ -1,8 +1,4 @@
-import "package:flutter_application_attempt_2/data/repped_set.dart";
-import "package:flutter_application_attempt_2/data/timed_set.dart";
-
 import 'workout_set.dart';
-import "enums_exercise_types.dart";
 
 class ActiveExercise {
   String name;

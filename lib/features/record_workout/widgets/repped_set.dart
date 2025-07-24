@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '/data/repped_set.dart';
+import '../data_classes/repped_set.dart';
 
 class ReppedSetWidget extends StatefulWidget{
   final ReppedSet set;
