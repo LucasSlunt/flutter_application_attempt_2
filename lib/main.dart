@@ -78,7 +78,15 @@ class CurrentWorkoutScreen extends StatelessWidget{
   }
 }
 
-class ExerciseWidget extends StatelessWidget{
+class ExerciseWidget extends StatefulWidget{
+  
+  const ExerciseWidget({super.key});
+
+  @override
+  ExerciseWidgetState createState() => ExerciseWidgetState();
+}
+
+class ExerciseWidgetState extends State<ExerciseWidget>{
   final ActiveExercise exercise = 
   ActiveExercise(
     name: "Bench Press", 
@@ -89,9 +97,6 @@ class ExerciseWidget extends StatelessWidget{
     currentPR: "155"
     );
     
-  ExerciseWidget({super.key});
-
-  
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -101,6 +106,7 @@ class ExerciseWidget extends StatelessWidget{
       ],
     );
   }
+  
 }
 
 class AddSetWidget extends StatelessWidget{
