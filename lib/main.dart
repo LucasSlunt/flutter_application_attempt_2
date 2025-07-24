@@ -129,11 +129,11 @@ class ReppedSetState extends State<ReppedSetWidget> {
             child:
             TextField(
               inputFormatters: [
-                FilteringTextInputFormatter.allow(RegExp(r'[1234567890]'))
+                FilteringTextInputFormatter.allow(RegExp('[1234567890]'))
               ],
               onChanged: (text) {
-                
-                print("reps:$text");
+                set.setNumberOfReps(int.parse(text));
+                print("reps:${set.getNumberOfReps()}");
               },
               controller: repTextController,
               decoration: InputDecoration(
@@ -149,10 +149,11 @@ class ReppedSetState extends State<ReppedSetWidget> {
             child:
             TextField(
               inputFormatters: [
-                FilteringTextInputFormatter.allow(RegExp(r'[1234567890.]'))
+                FilteringTextInputFormatter.allow(RegExp('\\d+.{0,1}\\d*'))
               ],
               onChanged: (text) {
-                print("weight:$text");
+                set.setWeightPerRep(double.parse(text));
+                print("reps:${set.getWeightPerRep()}");
               },
               controller: weightTextController,
               decoration: InputDecoration(
