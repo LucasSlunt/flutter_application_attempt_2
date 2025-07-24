@@ -107,12 +107,12 @@ class ExerciseWidgetState extends State<ExerciseWidget>{
         ElevatedButton(
           child: Text("Add Set"),
           onPressed: () {
-            print("${setWidgets.length}");
-            widget.exercise.addSet();
-            
+            ReppedSet newSet = ReppedSet();
+            widget.exercise.addSet(newSet);
             setState(() {
-              setWidgets.add(ReppedSetWidget());
-            });
+              setWidgets.add(ReppedSetWidget(set: newSet));
+            }
+            );
           }
       
       )
@@ -122,9 +122,9 @@ class ExerciseWidgetState extends State<ExerciseWidget>{
   }
 }
 class ReppedSetWidget extends StatefulWidget{
-  final ReppedSet set = ReppedSet();
+  final ReppedSet set;
 
-  ReppedSetWidget({super.key});
+  const ReppedSetWidget({super.key, required this.set});
 
   @override 
   ReppedSetState createState() => ReppedSetState();

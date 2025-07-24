@@ -23,13 +23,15 @@ class ActiveExercise {
     required currentPR
   });
 
-  addSet(){
+  addSet(WorkoutSet set){
+    sets.add(set);
+    /*
     if (statType == ExerciseStatType.reps){
       sets.add(ReppedSet());
     }
     else if (statType == ExerciseStatType.timed){
       sets.add(TimedSet());
-    }
+    }*/
   }
 
 }
