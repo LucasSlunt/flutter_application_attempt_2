@@ -68,8 +68,6 @@ class CurrentWorkoutScreen extends StatelessWidget{
             color: Color.fromARGB(255, Random().nextInt(255), Random().nextInt(255), 0),
             height: 500,
             padding: EdgeInsets.all(100),
-            //child: Text("Page $index"),
-            //child: ExerciseWidget("$index").buildName(context)
             child: ExerciseWidget()
           );
         }
@@ -79,15 +77,7 @@ class CurrentWorkoutScreen extends StatelessWidget{
 }
 
 class ExerciseWidget extends StatefulWidget{
-  
-  const ExerciseWidget({super.key});
-
-  @override
-  ExerciseWidgetState createState() => ExerciseWidgetState();
-}
-
-class ExerciseWidgetState extends State<ExerciseWidget>{
-  final ActiveExercise exercise = 
+final ActiveExercise exercise = 
   ActiveExercise(
     name: "Bench Press", 
     primaryMusclesWorked: [Muscles.midChest], 
@@ -97,45 +87,50 @@ class ExerciseWidgetState extends State<ExerciseWidget>{
     currentPR: "155"
     );
     
+  ExerciseWidget({super.key});
+
+  @override
+  ExerciseWidgetState createState() => ExerciseWidgetState();
+}
+
+class ExerciseWidgetState extends State<ExerciseWidget>{
+    List<ReppedSetWidget> setWidgets = [];
+    
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(exercise.name, style: Theme.of(context).textTheme.headlineLarge),
-        AddSetWidget(exercise: exercise),
+        Text(widget.exercise.name, style: Theme.of(context).textTheme.headlineLarge),
+        Column(
+          children: setWidgets,
+        ),
+        ElevatedButton(
+          child: Text("Add Set"),
+          onPressed: () {
+            print("${setWidgets.length}");
+            widget.exercise.addSet();
+            
+            setState(() {
+              setWidgets.add(ReppedSetWidget());
+            });
+          }
+      
+      )
       ],
+      
     );
   }
-  
-}
-
-class AddSetWidget extends StatelessWidget{
-  final ActiveExercise exercise;
-  const AddSetWidget({super.key, required this.exercise});
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      child: Text("Add Set"),
-      onPressed: () {
-        print("add set pressed");
-        exercise.addSet();
-      }
-      
-      );
-  }
-
 }
 class ReppedSetWidget extends StatefulWidget{
+  final ReppedSet set = ReppedSet();
 
-  const ReppedSetWidget({super.key});
+  ReppedSetWidget({super.key});
 
   @override 
   ReppedSetState createState() => ReppedSetState();
 }
 
 class ReppedSetState extends State<ReppedSetWidget> {
-  ReppedSet set = ReppedSet();
   final repTextController = TextEditingController();
   final weightTextController = TextEditingController();
 
@@ -167,8 +162,8 @@ class ReppedSetState extends State<ReppedSetWidget> {
                 FilteringTextInputFormatter.allow(RegExp('[1234567890]'))
               ],
               onChanged: (text) {
-                set.setNumberOfReps(int.parse(text));
-                print("reps:${set.getNumberOfReps()}");
+                widget.set.setNumberOfReps(int.parse(text));
+                print("reps:${widget.set.getNumberOfReps()}");
               },
               controller: repTextController,
               decoration: InputDecoration(
@@ -187,8 +182,8 @@ class ReppedSetState extends State<ReppedSetWidget> {
                 FilteringTextInputFormatter.allow(RegExp('\\d+.{0,1}\\d*'))
               ],
               onChanged: (text) {
-                set.setWeightPerRep(double.parse(text));
-                print("reps:${set.getWeightPerRep()}");
+                widget.set.setWeightPerRep(double.parse(text));
+                print("reps:${widget.set.getWeightPerRep()}");
               },
               controller: weightTextController,
               decoration: InputDecoration(
