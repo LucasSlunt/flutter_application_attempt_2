@@ -27,14 +27,16 @@ class ExerciseWidgetState extends State<ExerciseWidget>{
     
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Container(
+      padding: EdgeInsets.all(20),
+      child: Column(
       
 
       children: [
         Text(widget.exercise.name, style: Theme.of(context).textTheme.headlineLarge),
 
         Container(
-          width: 200,
+          width: 300,
           height: 400,
           color: Color.fromARGB(128, 200, 200, 200),
           child: SingleChildScrollView(
@@ -59,6 +61,7 @@ class ExerciseWidgetState extends State<ExerciseWidget>{
       
       ],
       
+    ),
     );
   }
 }

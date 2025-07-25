@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_attempt_2/features/record_workout/widgets/exercise.dart';
+import 'package:flutter_application_attempt_2/features/record_workout/widgets/workout.dart';
 
 void main() {
   runApp(const MyApp());
@@ -55,6 +56,8 @@ class CurrentWorkoutScreen extends StatelessWidget{
         backgroundColor: Colors.blue,
         title: Text("my workout"),
       ),
+      body: WorkoutWidget()
+      /*
       body: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemBuilder: (_, index){
@@ -66,6 +69,7 @@ class CurrentWorkoutScreen extends StatelessWidget{
           );
         }
       ),
+      */
     );
   }
 }
