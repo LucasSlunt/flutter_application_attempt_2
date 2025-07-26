@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_attempt_2/features/record_workout/widgets/exercise.dart';
+import 'package:flutter_application_attempt_2/features/record_workout/widgets/stopwatch.dart';
 
 class WorkoutWidget extends StatefulWidget{
   WorkoutWidget({super.key});
@@ -11,6 +12,7 @@ class WorkoutWidget extends StatefulWidget{
 
 }
 class _WorkoutWidgetState extends State<WorkoutWidget>{
+  StopwatchText stopwatch = StopwatchText();
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class _WorkoutWidgetState extends State<WorkoutWidget>{
     return Column(
       children: [
         Text("Workout Name", style: Theme.of(context).textTheme.headlineLarge),
-        Text("time"),
+        stopwatch,
         Container(
           width: 500,
           height: 600,
