@@ -1,7 +1,4 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_application_attempt_2/features/record_workout/widgets/exercise.dart';
 import 'package:flutter_application_attempt_2/features/record_workout/widgets/workout.dart';
 
 void main() {
@@ -57,19 +54,6 @@ class CurrentWorkoutScreen extends StatelessWidget{
         title: Text("my workout"),
       ),
       body: WorkoutWidget()
-      /*
-      body: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (_, index){
-          return Container(
-            color: Color.fromARGB(255, Random().nextInt(255), Random().nextInt(255), 0),
-            height: 500,
-            padding: EdgeInsets.all(100),
-            child: ExerciseWidget()
-          );
-        }
-      ),
-      */
     );
   }
 }
