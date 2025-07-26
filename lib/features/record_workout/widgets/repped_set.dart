@@ -8,10 +8,10 @@ class ReppedSetWidget extends StatefulWidget{
   const ReppedSetWidget({super.key, required this.set});
 
   @override 
-  ReppedSetState createState() => ReppedSetState();
+  State<ReppedSetWidget> createState() => _ReppedSetState();
 }
 
-class ReppedSetState extends State<ReppedSetWidget> {
+class _ReppedSetState extends State<ReppedSetWidget> {
   final repTextController = TextEditingController();
   final weightTextController = TextEditingController();
 

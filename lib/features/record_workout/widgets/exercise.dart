@@ -19,10 +19,10 @@ final ActiveExercise exercise =
   ExerciseWidget({super.key});
 
   @override
-  ExerciseWidgetState createState() => ExerciseWidgetState();
+  State<ExerciseWidget> createState() => _ExerciseWidgetState();
 }
 
-class ExerciseWidgetState extends State<ExerciseWidget>{
+class _ExerciseWidgetState extends State<ExerciseWidget>{
     List<ReppedSetWidget> setWidgets = [];
     
   @override

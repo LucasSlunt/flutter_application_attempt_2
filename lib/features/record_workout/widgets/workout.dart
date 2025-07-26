@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_attempt_2/features/record_workout/widgets/exercise.dart';
-import 'dart:math';
 
 class WorkoutWidget extends StatefulWidget{
   WorkoutWidget({super.key});
 
-final List<ExerciseWidget> exerciseWidgets = [ExerciseWidget()];
+  final List<ExerciseWidget> exerciseWidgets = [ExerciseWidget()];
 
   @override
-  WorkoutWidgetState createState() => WorkoutWidgetState();
+  State<WorkoutWidget> createState() => _WorkoutWidgetState();
 
 }
-class WorkoutWidgetState extends State<WorkoutWidget>{
+class _WorkoutWidgetState extends State<WorkoutWidget>{
+
   @override
   Widget build(BuildContext context) {
     
@@ -24,14 +24,6 @@ class WorkoutWidgetState extends State<WorkoutWidget>{
           height: 600,
           margin: EdgeInsets.all(20),
           color: Color.fromARGB(255, 110, 222, 118),
-          /*
-          child: ListView.builder(
-            itemCount: widget.exerciseWidgets.length,
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (_, index) {
-                return widget.exerciseWidgets[index];
-              }
-            ),*/
 
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
@@ -46,10 +38,7 @@ class WorkoutWidgetState extends State<WorkoutWidget>{
           onPressed: () {
             setState(() {
               widget.exerciseWidgets.add(ExerciseWidget());
-            });
-              
-              print("ExerciseWidgets length: ${widget.exerciseWidgets.length}");
-            
+            });      
           },
           child: Text("Add exercise")
         ),
