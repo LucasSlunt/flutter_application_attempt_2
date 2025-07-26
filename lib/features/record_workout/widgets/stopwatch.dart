@@ -11,17 +11,17 @@ class StopwatchText extends StatefulWidget{
 
 class _StopwatchTextState extends State<StopwatchText>{
   final Stopwatch stopwatch = Stopwatch();
-  Duration elapsedTime = Duration.zero;
+  String elapsedTime = "00:00:00";
   late Timer timer;
 
   @override
   void initState(){
     super.initState();
     startWatch();
-    //every 100 milliseconds, the timer will update the displayed time
-    timer = Timer.periodic(const Duration(milliseconds: 100), (Timer timer) {
+    //every second, the timer will update the displayed time
+    timer = Timer.periodic(const Duration(milliseconds: 1000), (Timer timer) {
       setState(() {
-        elapsedTime = stopwatch.elapsed;
+        elapsedTime = formatElapsedTime(stopwatch.elapsed);
       });
   });
   }
@@ -34,11 +34,13 @@ class _StopwatchTextState extends State<StopwatchText>{
     stopwatch.stop();
   }
 
-  
+  String formatElapsedTime(Duration time) {
+    return '${time.inHours.remainder(60).toString().padLeft(2, '0')}:${time.inMinutes.remainder(60).toString().padLeft(2, '0')}:${(time.inSeconds.remainder(60)).toString().padLeft(2, '0')}';
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Text(stopwatch.elapsed.toString());
+    return Text(elapsedTime);
   }
   
 }
